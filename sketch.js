@@ -65,38 +65,35 @@ function draw() {
     }
     else if (diamondsG.isTouching(boy)) {
       diamondsG.destroyEach();
-      treasureCollection=treasureCollection+100;
+      treasureCollection=treasureCollection+150;
+
       
     }else if(jwelleryG.isTouching(boy)) {
       jwelleryG.destroyEach();
-      treasureCollection= treasureCollection + 150;
+      treasureCollection=treasureCollection+100;
+
       
     }else{
       if(swordGroup.isTouching(boy)) {
         gameState=END;
-        
         boy.addAnimation("SahilRunning",endImg);
         boy.x=width/2;
         boy.y=height/2;
-        boy.scale=0.6;
-        
         cashG.destroyEach();
-        diamondsG.destroyEach();
-        jwelleryG.destroyEach();
-        swordGroup.destroyEach();
-        
         cashG.setVelocityYEach(0);
-        diamondsG.setVelocityYEach(0);
+        jwelleryG.destroyEach();
         jwelleryG.setVelocityYEach(0);
-        swordGroup.setVelocityYEach(0);
-     
+        diamondsG.destroyEach();
+        diamondsG.setVelocityYEach(0);
+        swordsG.destroyEach();
+        swordsG.setVelocityYEach(0);
     }
   }
   
   drawSprites();
   textSize(20);
   fill(255);
-  text("Treasure: "+ treasureCollection,width-150,30);
+  text("Treasure: "+ treasureCollection,150,150);
   }
 
 }
@@ -107,7 +104,7 @@ function createCash() {
   cash.addImage(cashImg);
   cash.scale=0.12;
   cash.velocityY = 3;
- // cash.lifetime = 150;
+  cash.lifetime = 150;
   cashG.add(cash);
   }
 }
@@ -118,7 +115,7 @@ function createDiamonds() {
   diamonds.addImage(diamondsImg);
   diamonds.scale=0.03;
   diamonds.velocityY = 3;
-  //diamonds.lifetime = 150;
+  diamonds.lifetime = 150;
   diamondsG.add(diamonds);
 }
 }
@@ -129,7 +126,7 @@ function createJwellery() {
   jwellery.addImage(jwelleryImg);
   jwellery.scale=0.13;
   jwellery.velocityY = 3;
-  //jwellery.lifetime = 150;
+  jwellery.lifetime = 150;
   jwelleryG.add(jwellery);
   }
 }
@@ -140,7 +137,7 @@ function createSword(){
   sword.addImage(swordImg);
   sword.scale=0.1;
   sword.velocityY = 3;
-  //sword.lifetime = 150;
+  sword.lifetime = 150;
   swordGroup.add(sword);
   }
 }
